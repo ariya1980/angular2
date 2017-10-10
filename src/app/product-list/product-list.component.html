@@ -1,0 +1,6 @@
+<div *ngIf='products && products.length'>
+  <div *ngFor='let product of products'>
+    {{product.productName}}
+  </div>
+</div>
+<div *ngIf='!products || !products.length'>NoData found</div>
