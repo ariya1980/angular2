@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductService } from './product.service';
 import { routes } from './routes';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { WelcomeComponent } from './home/welcome.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

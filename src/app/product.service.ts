@@ -9,6 +9,7 @@ import 'rxjs/add/operator/catch';
 
 import { IProduct } from './product-list/product';
 
+
 @Injectable()
 export class ProductService {
 
@@ -21,6 +22,11 @@ export class ProductService {
                        //.map(response => {console.log(response); return []} )
                        .do((data) => console.log(data))
                        .catch((err: HttpErrorResponse) => {console.log(err);return Observable.throw(err.error.message)});
+  }
+  
+  getProduct(id: number): Observable<IProduct>{
+    return this.getProducts()
+                .map((products: IProduct[]) => products.find(p => p.productId === id));
   }
 
 }
