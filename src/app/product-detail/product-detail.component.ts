@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProductService } from '../product.service';
 import { Observable } from 'rxjs/Observable';
@@ -16,10 +16,12 @@ export class ProductDetailComponent implements OnInit {
   private id: number;
 
   constructor(private _route: ActivatedRoute, 
+              private _router: Router,
               private _productService: ProductService) { }
 
   ngOnInit() {
      this.id = +this._route.snapshot.paramMap.get('id'); //'+' for pass to number
+     //this.id = +this._route.snapshot.queryParamMap.get('id'); 
      this.getProduct();
   }
   getProduct(){
@@ -27,5 +29,8 @@ export class ProductDetailComponent implements OnInit {
       product => this.product = product
       ,error => this.errorMessage = <any>error
     );
+  }
+  goBack(){
+    this._router.navigate(['/products']);
   }
 }
