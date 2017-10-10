@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ProductService } from '../product.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'pm-product-list',
@@ -10,6 +11,7 @@ import { ProductService } from '../product.service';
 export class ProductListComponent implements OnInit {
 
   private products: Object[] = [];
+  private asyncProducts: Observable<Object[]>;
 
   constructor(private _productService: ProductService) { }
 
@@ -17,8 +19,11 @@ export class ProductListComponent implements OnInit {
       this._productService.getProducts()
       .subscribe(products => {
         this.products = products;
+        //debugger;
         console.log(products);
       }, error => { console.log('Error!')})
+
+     //this.asyncProducts = this._productService.getProducts();
   }
 
 }

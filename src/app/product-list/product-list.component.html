@@ -1,6 +1,32 @@
-<div *ngIf='products && products.length'>
-  <div *ngFor='let product of products'>
-    {{product.productName}}
+<div class='panel panel-primary'>
+  <div class='panel-heading'>
+      Product List
+  </div>
+  <div class='panel-body'>
+      <div class='table-responsive'>
+          <table class='table'
+                  *ngIf='products && products.length'>
+              <thead>
+                  <tr>
+                      <th>Product</th>
+                      <th>Code</th>
+                      <th>Available</th>
+                      <th>Price</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <!--<tr *ngFor='let product of asyncProducts | async'> -->
+                  <tr *ngFor='let product of products'>
+                      <td>{{ product.productName }}</td>
+                      <td>{{ product.productCode }}</td>
+                      <td>{{ product.releaseDate }}</td>
+                      <td>{{ product.price}}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
   </div>
 </div>
-<div *ngIf='!products || !products.length'>NoData found</div>
+<div *ngIf='!products || !products.length' class='alert alert-danger'>
+  No data found
+</div>

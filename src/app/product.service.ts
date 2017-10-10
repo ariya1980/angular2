@@ -5,6 +5,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+// import 'rxjs/Rx'; is big
+
+import { IProduct } from './product-list/product';
 
 @Injectable()
 export class ProductService {
@@ -13,8 +16,8 @@ export class ProductService {
 
   constructor(private _http: HttpClient) { }
 
-  getProducts(): Observable<Object[]>{
-      return this._http.get<Object[]>(this._apiURL) 
+  getProducts(): Observable<IProduct[]>{
+      return this._http.get<IProduct[]>(this._apiURL) 
                        //.map(response => {console.log(response); return []} )
                        .do((data) => console.log(data))
                        .catch((err: HttpErrorResponse) => {console.log(err);return Observable.throw(err.error.message)});
