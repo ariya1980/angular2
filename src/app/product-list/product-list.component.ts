@@ -26,5 +26,8 @@ export class ProductListComponent implements OnInit {
 
      this.asyncProducts = this._productService.getProducts();
   }
-
+  remove(id: number){
+    console.log('remove : ' + id);
+    
+  }
 }
