@@ -17,6 +17,7 @@ export class ProductListComponent implements OnInit {
   private products: Object[] = [];
   private asyncProducts: Observable<Object[]>;
   private txtFilter: string;
+  private ratingResult: string;
 
   constructor(private _productService: ProductService) { }
 
@@ -43,5 +44,9 @@ export class ProductListComponent implements OnInit {
       return (product.productId == id)
     });
     console.log(this.products);
+  }
+  doRatingClicked(result: string){
+    this.ratingResult = result;
+    console.log(' Result : ' + this.ratingResult);
   }
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -13,6 +13,7 @@ import { WelcomeComponent } from './home/welcome.component';
 // import { ProductDetailGuardService } from './products/product-detail-guard.service';
 // import { ProductPipe } from './products/product.pipe';
 import { ProductModule } from './products/product.module';
+import { AuthInterceptorService } from './auth-interceptor.service';
 //import { StarComponent } from './shared/star.component';
 //import { SharedModule } from './shared/shared.module';
 
@@ -32,7 +33,11 @@ import { ProductModule } from './products/product.module';
     ProductModule
    // SharedModule
   ],
-  providers: [HttpClient],
+  providers: [HttpClient,
+              {provide: HTTP_INTERCEPTORS, 
+               useClass: AuthInterceptorService,
+               multi: true} 
+             ],
   bootstrap: [AppComponent]
   //bootstrap: [ProductListComponent]
 })

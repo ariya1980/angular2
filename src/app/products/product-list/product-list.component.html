@@ -1,6 +1,6 @@
 <div class='panel panel-primary'>
   <div class='panel-heading'>
-      Product List
+      Product List {{ ratingResult }}
   </div>
   <div class='panel-body'>
       <div class='table-responsive'>
@@ -27,7 +27,8 @@
                       <td>{{ product.productCode }}</td>
                       <td>{{ product.releaseDate }}</td>
                       <td>{{ product.price }}</td>
-                      <td><pm-star [rating]='product.starRating' ></pm-star></td>
+                      <td><pm-star [rating]='product.starRating' 
+                                   (ratingClicked)='doRatingClicked($event)' > </pm-star></td>
                       <td><button (click)='doRemove(product.productId)'>Delete</button></td>                     
                   </tr>
               </tbody>
